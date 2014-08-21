@@ -1,4 +1,3 @@
-ansible-pull-testing
-====================
+#ansible-pull-testing
 
-disregard this, it will be erased in a few days
+Disregard this, will be erased next week anyway
