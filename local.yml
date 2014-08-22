@@ -7,4 +7,4 @@
     - unzip
     - java
 #    - apache
-#    - tomcat
+    - tomcat
