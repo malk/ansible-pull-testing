@@ -6,5 +6,5 @@
   roles:
     - unzip
     - java
-#    - apache
+    - apache
     - tomcat
