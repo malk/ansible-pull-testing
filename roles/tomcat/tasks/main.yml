@@ -1,3 +1,6 @@
 ---
 - name: Install Tomcat
   yum: name=tomcat state=present
+
+  - name : ajoute localhost au connecteur
+  lineinfile: dest=/etc/tomcat/server.xml regexp='Connector port="8080"' line='<Connector address="127.0.0.1" port="8080" protocol="HTTP/1.1"'
