@@ -2,5 +2,8 @@
 - name: Install Tomcat
   yum: name=tomcat state=present
 
-- name : ajoute localhost au connecteur
+- name: localhost connector in server conf
   lineinfile: dest=/etc/tomcat/server.xml regexp='<Connector port="8080" protocol="HTTP/1.1"' line='<Connector port="8080" protocol="HTTP/1.1" address="127.0.0.1"'
+
+- name: Java OPTS in sysconfig
+  lineinfile: dest=/etc/sysconfig/tomcat line='JAVA_OPTS="$JAVA_OPTS -Xms512m -Xmx2048m -Dlinshare.config.path=file:/etc/linshare -Dlog4j.configuration=file:/etc/linshare/log4j.properties"'
