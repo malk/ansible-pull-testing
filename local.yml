@@ -8,4 +8,5 @@
     - java
     - apache
     - tomcat
+    - postgres-driver
     - linshare
