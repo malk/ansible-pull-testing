@@ -4,8 +4,4 @@
   remote_user: vagrant
   sudo: yes
   roles:
-    - unzip
-    - java
-    - apache
-    - tomcat
     - linshare

@@ -1,3 +1,7 @@
 ---
 dependencies:
+  - unzip
+  - java
   - postgres-driver
+  - apache
+  - tomcat
