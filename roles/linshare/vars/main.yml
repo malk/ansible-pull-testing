@@ -1,2 +1,3 @@
 ---
 linshare_url: https://forge.linshare.org/attachments/download/378/linshare-1.5.8-SSO.war
+linshare_war: /var/lib/tomcat/webapps/linshare.war

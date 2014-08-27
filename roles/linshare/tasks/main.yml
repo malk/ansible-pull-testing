@@ -3,4 +3,4 @@
   file: path=/var/lib/linshare state=directory owner=tomcat group=tomcat
 
 - name: download linshare
-  get_url: url="{{ linshare_url }}" dest=/var/lib/tomcat/webapps/linshare.war owner=tomcat group=tomcat
+  get_url: url="{{ linshare_url }}" dest="{{ linshare_war }}" owner=tomcat group=tomcat
