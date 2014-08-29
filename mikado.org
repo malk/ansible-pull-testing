@@ -1,0 +1,6 @@
+* Install Linshare
+** pg conf
+*** unzip into db
+**** Install db
+*** Render it idempotent
+** optionally we can already have downloaded the linshare to a local file
