@@ -1,6 +1,11 @@
 ---
 - name: linshare lib dir exists
-  file: path=/var/lib/linshare state=directory owner=tomcat group=tomcat
+  file: path="{{ linshare_lib }}" state=directory owner=tomcat group=tomcat
 
 - name: download linshare
   get_url: url="{{ linshare_url }}" dest="{{ linshare_war }}" owner=tomcat group=tomcat
+
+- name: configure-linshare-db
+  shell: echo lawld | tee "{{ linshare_lib }}/lawld" > /tmp/testy
+  remote_user: postgres
+  creates: "{{ linshare_lib }}/lawld"
