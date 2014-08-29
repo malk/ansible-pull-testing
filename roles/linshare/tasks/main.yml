@@ -8,4 +8,5 @@
 - name: configure-linshare-db
   shell: echo lawld | tee "{{ linshare_lib }}/lawld" > /tmp/testy
   remote_user: postgres
-  creates: "{{ linshare_lib }}/lawld"
+  args:
+    creates: "{{ linshare_lib }}/lawld"
