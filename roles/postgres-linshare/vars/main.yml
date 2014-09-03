@@ -1,0 +1,9 @@
+---
+
+# linshare_user and pass should be groupvars!
+linshare_user: linshare
+linshare_pass: linshare
+
+linshare_db: linshare
+linshare_db_data: linshare_data
+
