@@ -3,6 +3,6 @@ dependencies:
   - unzip
   - java
   - postgres
-  - postgres-driver
+  - postgres-linshare
   - apache
   - tomcat
