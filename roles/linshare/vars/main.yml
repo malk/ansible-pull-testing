@@ -1,6 +1,7 @@
 ---
 linshare_url: https://forge.linshare.org/attachments/download/378/linshare-1.5.8-SSO.war
-
+linshare_user: linshare
+linshare_pass: linshare
 
 # The following is meant not for editing but for refactoring, just forget about it
 linshare_war: /var/lib/tomcat/webapps/linshare.war
