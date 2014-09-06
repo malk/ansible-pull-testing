@@ -4,6 +4,10 @@
 linshare_user: linshare
 linshare_pass: linshare
 
+# this must always be the concatenation of linshare_user and linshare_pass!!!!
+linshare_to_encrypt_db_pass: linsharelinshare
+
 linshare_db: linshare
 linshare_db_data: linshare_data
 
+linshare_pg_host: localhost

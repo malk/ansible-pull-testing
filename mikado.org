@@ -2,7 +2,14 @@
 ** pg conf
 *** unzip into db
 **** Install db
+***** create user
+      str["md5"] + md5[ password + username ]'
+      resulting in a total of 35 characters.
+      An easy way to do this is:
+      echo "md5`echo -n "verysecretpasswordJOE" | md5`".
 *** Render it idempotent
 ** optionally we can already have downloaded the linshare to a local file
+** my current pg-linshare role is too much "localhost pg" oriented, I must make it work with remote pgs
 ** make linshare_user and pass group vars
+** make it both pull and push 
    
