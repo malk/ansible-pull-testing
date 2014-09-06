@@ -5,6 +5,7 @@
     - postgresql
     - postgresql-jdbc
     - postgresql-server
+    - python-psycopg2
 
 - name: Initdb
   command: service postgresql initdb
