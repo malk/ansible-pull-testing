@@ -7,6 +7,9 @@ linshare_pass: linshare
 # this must always be the concatenation of linshare_user and linshare_pass!!!!
 linshare_to_encrypt_db_pass: linsharelinshare
 
+# password of the postgres user in the database itself
+# postgres_user_db_pasword: 
+
 linshare_db: linshare
 linshare_db_data: linshare_data
 

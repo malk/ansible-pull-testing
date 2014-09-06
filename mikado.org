@@ -2,7 +2,7 @@
 ** pg conf
 *** unzip into db
 **** Install db
-***** create user
+***** create user X
       str["md5"] + md5[ password + username ]'
       resulting in a total of 35 characters.
       An easy way to do this is:
