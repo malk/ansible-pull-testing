@@ -10,6 +10,7 @@
 *** Render it idempotent
 ** optionally we can already have downloaded the linshare to a local file
 ** my current pg-linshare role is too much "localhost pg" oriented, I must make it work with remote pgs
+*** things are not cleanly separated betwen postgres and postgres-linshare
 ** make linshare_user and pass group vars
 ** make it both pull and push 
    
