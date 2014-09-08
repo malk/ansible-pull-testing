@@ -24,7 +24,7 @@
     creates: "{{ linshare_tmp_dir }}/set-pg_user_password"
 
 - name: adds french support
-  shell: yum langinstall fr_FR.utf8 && touch {{ linshare_tmp_dir }}/added_french_locale
+  shell: yum groupinstall "French Support" && touch {{ linshare_tmp_dir }}/added_french_locale
   args:
     creates: "{{ linshare_tmp_dir }}/added_french_locale"
 
