@@ -8,11 +8,11 @@
 
 
 - name: Create linshare db user
-  shell: "echo 'createuser -DSREil {{ linshare_user }}' > {{ linshare_lib }}/create_db_user.sh && createuser -DSREil {{ linshare_user }}"
+  shell: "echo 'createuser -DSREil {{ linshare_user }}' > /tmp/create_db_user.sh && createuser -DSREil {{ linshare_user }}"
   sudo: yes
   sudo_user: postgres
   args:
-    creates: "{{ linshare_lib }}/create_db_user.sh"
+    creates: "/tmp/create_db_user.sh"
 
 
 
