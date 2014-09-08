@@ -6,7 +6,8 @@
   get_url: url="{{ linshare_url }}" dest="{{ linshare_war }}" owner=tomcat group=tomcat
 
 - name: configure-linshare-db
-  shell: echo lawld | tee "{{ linshare_lib }}/lawld" > /tmp/testy
-  remote_user: postgres
+  shell: unzip -c {{ linshare_war }} WEB-INF/classes/sql/postgresql/createSchema.sql | psql -h {{ linshare_pg_host }} -U {{ linshare_user }} -W && touch tee {{ linshare_tmp_dir }}/created_schema
+  sudo: yes
+  sudo_user: postgres
   args:
-    creates: "{{ linshare_lib }}/lawld"
+    creates: "{{ linshare_tmp_dir }}/created_schema"
