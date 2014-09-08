@@ -6,17 +6,10 @@
   lineinfile: dest=/var/lib/pgsql/data/pg_hba.conf regexp="host\s+{{ linshare_db }},{{ linshare_db_data }}\s+{{ linshare_user }}\s+127.0.0.1/32\s+md5" line="host {{ linshare_db }},{{ linshare_db_data }} {{ linshare_user }} 127.0.0.1/32 md5" insertbefore=BOF
   notify: restart postgresql
 
-- name: Create linshare user
-  postgresql_user:
-    db="{{ linshare_db }}"
-    name="{{ linshare_user }}"
-    encrypted=True password="md5{{ linshare_to_encrypt_db_pass|md5 }}"
-    role_attr_flags="NOCREATEDB,NOSUPERUSER,NOCREATEROLE"
-    login_user=postgres
-    login_host="{{ linshare_pg_host }}"
+
+- name: Create linshare db user
+  shell: env
   remote_user: postgres
-  sudo: yes
-  sudo_user: postgres
 
 
 
