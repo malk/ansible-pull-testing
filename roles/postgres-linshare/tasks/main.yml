@@ -7,9 +7,7 @@
   notify: restart postgresql
 
 - name: creates linshare tmp dir
-  file: "{{ linshare_tmp_dir }}"
-  state: directory
-  mode: 0777
+  file: path="{{ linshare_tmp_dir }}" state=directory mode=0777
 
 - name: Create linshare db user
   shell: createuser -DSREil {{ linshare_user }} && touch {{ linshare_tmp_dir }}/created_db_user
