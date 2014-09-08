@@ -24,7 +24,7 @@
   file: path="{{ linshare_conf_dir }}" state=directory
 
 - name: extract default linshare conf
-  command: unzip -o -j -d {{ linshare_conf_dir }} {{ linshare_war }} WEB-INF/classes/{linshare,log4j}.*
+  shell: unzip -o -j -d {{ linshare_conf_dir }} {{ linshare_war }} WEB-INF/classes/{linshare,log4j}.*
   args:
     creates: "{{ linshare_conf_dir }}/log4j.properties"
 
