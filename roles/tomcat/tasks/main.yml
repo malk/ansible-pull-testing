@@ -7,3 +7,6 @@
 
 - name: Java OPTS in sysconfig
   lineinfile: dest=/etc/sysconfig/tomcat line='JAVA_OPTS="$JAVA_OPTS -Xms512m -Xmx2048m -Dlinshare.config.path=file:/etc/linshare -Dlog4j.configuration=file:/etc/linshare/log4j.properties"'
+
+- name: Start Tomcat and enable at boot
+  service: name=tomcat enabled=yes state=started

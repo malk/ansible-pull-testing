@@ -1,16 +1,17 @@
 * Install Linshare
-** pg conf
-*** unzip into db
-**** Install db
-***** create user X
+** DONE pg conf
+*** DONE unzip into db
+**** DONE Install db
+***** DONE create user X
       str["md5"] + md5[ password + username ]'
       resulting in a total of 35 characters.
       An easy way to do this is:
       echo "md5`echo -n "verysecretpasswordJOE" | md5`".
-*** Render it idempotent
-** optionally we can already have downloaded the linshare to a local file
+*** DONE Render it idempotent
 ** my current pg-linshare role is too much "localhost pg" oriented, I must make it work with remote pgs
 *** things are not cleanly separated betwen postgres and postgres-linshare
 ** make linshare_user and pass group vars
 ** make it both pull and push 
-   
+** Apache
+*** template
+    

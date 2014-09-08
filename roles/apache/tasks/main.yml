@@ -5,3 +5,13 @@
     - httpd
     - httpd-itk
     - mod_ssl
+
+- name: Ensure apache log direcotry is there
+  file: path="/var/log/httpd/linshare" state=directory
+
+- name: Ensure Linshare apache directory apache direcotry is there
+  file: path="/var/www/linshare" state=directory
+
+- name: Start Apache and enable at boot
+  service: name=httpd enabled=yes state=started
+
