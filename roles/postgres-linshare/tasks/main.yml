@@ -9,7 +9,8 @@
 
 - name: Create linshare db user
   shell: env
-  remote_user: postgres
+  sudo: yes
+  sudo_user: postgres
 
 
 
