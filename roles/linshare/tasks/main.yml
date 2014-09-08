@@ -19,3 +19,30 @@
   sudo_user: postgres
   args:
     creates: "{{ linshare_tmp_dir }}/imported-postgres-tables"
+
+- name: linshare conf dir exists
+  file: path=/etc/linshare state=directory
+
+- name: extract default linshare conf
+  command: unzip -o -j -d /etc/linshare $linshare_file WEB-INF/classes/{linshare,log4j}.*
+  args:
+    creates: /etc/linshare/log4j.properties
+
+- name: configure linshare
+  shell: sed \
+    -e 's/^mail.smtp.host=smtp.yourdomain.com/mail.smtp.host={{ linshare_smtp_host }}/' \
+    -e 's/^mail.smtp.port=.*/mail.smtp.port=25/' \
+    -e 's/^mail.smtp.auth.needed=.*/mail.smtp.auth.needed=false/' \
+    -e 's/^linshare.db.username=.*/linshare.db.username={{ linshare_user }}/' \
+    -e 's/^linshare.db.password=.*/linshare.db.password={{ linshare_pass }}/' \
+    -e 's/^linshare.db.driver.class=.*/linshare.db.driver.class=org.postgresql.Driver/' \
+    -e 's/^linshare.db.url=.*/linshare.db.url=jdbc:postgresql:\/\/localhost:5432\/linshare/' \
+    -e 's/^linshare.db.dialect=.*/linshare.db.dialect=org.hibernate.dialect.PostgreSQLDialect/' \
+    -e 's/^linshare.files.directory=.*/linshare.files.directory=\/var\/lib\/linshare/' \
+    /etc/linshare/linshare.properties.sample > /etc/linshare/linshare.properties
+  args:
+    creates: /etc/linshare/linshare.properties
+
+- name: erase sample linshare conf
+  file: path=/etc/linshare/linshare.properties.sample state=absent
+
