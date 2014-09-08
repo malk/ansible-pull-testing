@@ -14,8 +14,7 @@
     role_attr_flags="NOCREATEDB,NOSUPERUSER,NOCREATEROLE"
     login_user=postgres
     login_host="{{ linshare_pg_host }}"
-  sudo: yes
-  sudo_user: postgres
+  remote_user: postgres
 
 
 
