@@ -21,12 +21,12 @@
     creates: "{{ linshare_tmp_dir }}/imported-postgres-tables"
 
 - name: linshare conf dir exists
-  file: path=/etc/linshare state=directory
+  file: path="{{ linshare_conf_dir }}" state=directory
 
 - name: extract default linshare conf
-  command: unzip -o -j -d /etc/linshare $linshare_file WEB-INF/classes/{linshare,log4j}.*
+  command: unzip -o -j -d {{ linshare_conf_dir }} {{ linshare_war }} WEB-INF/classes/{linshare,log4j}.*
   args:
-    creates: /etc/linshare/log4j.properties
+    creates: "{{ linshare_conf_dir }}/log4j.properties"
 
 - name: configure linshare
   shell: sed \
@@ -39,10 +39,10 @@
     -e 's/^linshare.db.url=.*/linshare.db.url=jdbc:postgresql:\/\/localhost:5432\/linshare/' \
     -e 's/^linshare.db.dialect=.*/linshare.db.dialect=org.hibernate.dialect.PostgreSQLDialect/' \
     -e 's/^linshare.files.directory=.*/linshare.files.directory=\/var\/lib\/linshare/' \
-    /etc/linshare/linshare.properties.sample > /etc/linshare/linshare.properties
+    {{ linshare_conf_dir }}/linshare.properties.sample > {{ linshare_conf_dir }}/linshare.properties
   args:
-    creates: /etc/linshare/linshare.properties
+    creates: "{{ linshare_conf_dir }}/linshare.properties"
 
 - name: erase sample linshare conf
-  file: path=/etc/linshare/linshare.properties.sample state=absent
+  file: path="{{ linshare_conf_dir }}/linshare.properties.sample" state=absent
 

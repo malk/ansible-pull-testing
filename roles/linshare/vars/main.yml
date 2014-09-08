@@ -8,3 +8,5 @@ linshare_war: /var/lib/tomcat/webapps/linshare.war
 linshare_lib: /var/lib/linshare
 
 linshare_smtp_host: mailrelay.client1.com
+
+linshare_conf_dir: /etc/linshare
