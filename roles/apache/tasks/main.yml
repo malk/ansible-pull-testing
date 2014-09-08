@@ -12,6 +12,12 @@
 - name: Ensure Linshare apache directory apache direcotry is there
   file: path="/var/www/linshare" state=directory
 
+- name: Create linshare config file
+  template: src=linshare.conf dest=/etc/httpd/conf.d/linshare.conf
+
+- name: Create linshare config file
+  template: src=linshare_sso.conf dest=/etc/httpd/conf.d/linshare_sso.conf
+
 - name: Start Apache and enable at boot
   service: name=httpd enabled=yes state=started
 

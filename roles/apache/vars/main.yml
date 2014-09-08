@@ -1,0 +1,3 @@
+server_admin_mail: postmaster@client1.com
+linshare_httpd_url: external.linshare.client1.com
+linshare_for_sso_httpd_url: for-sso.linshare.client1.com
