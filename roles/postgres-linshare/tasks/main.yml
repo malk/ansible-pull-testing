@@ -9,6 +9,10 @@
 - name: creates linshare tmp dir
   file: path="{{ linshare_tmp_dir }}" state=directory mode=0777
 
+# this should REALLY be just a call to postgres_user (and thus merge with
+# the set password one), but sudo to postgres followed to a pg Ident login
+# as postgres fails when using postgres_user currently, so we fallback to
+# crude shell
 - name: Create linshare db user
   shell: createuser -DSREil {{ linshare_user }} && touch {{ linshare_tmp_dir }}/created_db_user
   sudo: yes
@@ -23,6 +27,7 @@
   args:
     creates: "{{ linshare_tmp_dir }}/set-pg_user_password"
 
+# c.f. postgres_user comment but to table creation
 - name: creates linshare db
   shell: createdb -E UTF8 -D pg_default -T template0 -O {{ linshare_user }} {{ linshare_db }} && touch {{ linshare_tmp_dir }}/created_linshare_db
   sudo: yes
