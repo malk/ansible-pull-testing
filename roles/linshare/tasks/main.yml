@@ -29,17 +29,7 @@
     creates: "{{ linshare_conf_dir }}/log4j.properties"
 
 - name: configure linshare
-  shell: sed \
-    -e 's/^mail.smtp.host=smtp.yourdomain.com/mail.smtp.host={{ linshare_smtp_host }}/' \
-    -e 's/^mail.smtp.port=.*/mail.smtp.port=25/' \
-    -e 's/^mail.smtp.auth.needed=.*/mail.smtp.auth.needed=false/' \
-    -e 's/^linshare.db.username=.*/linshare.db.username={{ linshare_user }}/' \
-    -e 's/^linshare.db.password=.*/linshare.db.password={{ linshare_pass }}/' \
-    -e 's/^linshare.db.driver.class=.*/linshare.db.driver.class=org.postgresql.Driver/' \
-    -e 's/^linshare.db.url=.*/linshare.db.url=jdbc:postgresql:\/\/localhost:5432\/linshare/' \
-    -e 's/^linshare.db.dialect=.*/linshare.db.dialect=org.hibernate.dialect.PostgreSQLDialect/' \
-    -e 's/^linshare.files.directory=.*/linshare.files.directory=\/var\/lib\/linshare/' \
-    {{ linshare_conf_dir }}/linshare.properties.sample > {{ linshare_conf_dir }}/linshare.properties
+  shell: sed -e 's/^mail.smtp.host=smtp.yourdomain.com/mail.smtp.host={{ linshare_smtp_host }}/' -e 's/^mail.smtp.port=.*/mail.smtp.port=25/' -e 's/^mail.smtp.auth.needed=.*/mail.smtp.auth.needed=false/' -e 's/^linshare.db.username=.*/linshare.db.username={{ linshare_user }}/' -e 's/^linshare.db.password=.*/linshare.db.password={{ linshare_pass }}/' -e 's/^linshare.db.driver.class=.*/linshare.db.driver.class=org.postgresql.Driver/' -e 's/^linshare.db.url=.*/linshare.db.url=jdbc:postgresql:\/\/localhost:5432\/linshare/' -e 's/^linshare.db.dialect=.*/linshare.db.dialect=org.hibernate.dialect.PostgreSQLDialect/' -e 's/^linshare.files.directory=.*/linshare.files.directory=\/var\/lib\/linshare/' {{ linshare_conf_dir }}/linshare.properties.sample > {{ linshare_conf_dir }}/linshare.properties
   args:
     creates: "{{ linshare_conf_dir }}/linshare.properties"
 
