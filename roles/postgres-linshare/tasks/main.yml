@@ -6,20 +6,24 @@
   lineinfile: dest=/var/lib/pgsql/data/pg_hba.conf regexp="host\s+{{ linshare_db }},{{ linshare_db_data }}\s+{{ linshare_user }}\s+127.0.0.1/32\s+md5" line="host {{ linshare_db }},{{ linshare_db_data }} {{ linshare_user }} 127.0.0.1/32 md5" insertbefore=BOF
   notify: restart postgresql
 
+- name: creates linshare tmp dir
+  file: "{{ linshare_tmp_dir }}"
+  state: directory
+  mode: 0777
 
 - name: Create linshare db user
-  shell: createuser -DSREil {{ linshare_user }} && touch /tmp/created_db_user
+  shell: createuser -DSREil {{ linshare_user }} && touch {{ linshare_tmp_dir }}/created_db_user
   sudo: yes
   sudo_user: postgres
   args:
-    creates: /tmp/created_db_user
+    creates: "{{ linshare_tmp_dir }}/created_db_user"
 
 - name: set password for linshare db user
-  shell: echo "ALTER USER {{ linshare_user }} WITH PASSWORD '{{ linshare_user }}';" | psql && touch /tmp/set-pg_user_password
+  shell: echo "ALTER USER {{ linshare_user }} WITH PASSWORD '{{ linshare_user }}';" | psql && touch {{ linshare_tmp_dir }}/set-pg_user_password
   sudo: yes
   sudo_user: postgres
   args:
-    creates: /tmp/set-pg_user_password
+    creates: "{{ linshare_tmp_dir }}/set-pg_user_password"
 
 
 

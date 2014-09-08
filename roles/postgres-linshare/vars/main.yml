@@ -14,3 +14,5 @@ linshare_db: linshare
 linshare_db_data: linshare_data
 
 linshare_pg_host: localhost
+
+linshare_tmp_dir: /var/tmp/linshare
